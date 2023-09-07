@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Like Vs-Code</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
+  </head>
+  <body>
+    <div id="bg">
+      <div id="left">
+        <div id="add-folder">
+          <h1>folder</h1>
+          <div id="icons">
+            <i id="display-form" class="ri-add-line"></i>
+            <a href="/"><i class="ri-refresh-line"></i></a>
+          </div>
+        </div>
+        <div id="allFolder">
+          <div class="folder">
+            <div id="folder-name">
+              <i class="ri-folder-line"></i>
+              <h5>Uploads</h5>
+            </div>
+            <div id="files">
+              <% files.forEach((file) => { %>
+                <div class="file">
+                    <i class="ri-subtract-line"></i>
+                    <a href=<%= "/openfile/" +file %> ><h6><%= file%></h6></a>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="right">
+        <div id="form">
+          <form action="/filecreation" method="post">
+            <h3>Create Your Folder</h3>
+            <input type="text" placeholder="Enter Folder Name" name="filename"/>
+            <button id="hide" type="submit">Add</button>
+          </form>
+        </div>
+        <nav>
+          <div class="file-name">
+              <!-- <h6>Somefilename.txt</h6> -->
+              <h6><%= filename %></h6>
+              <a href="/"><i class="ri-close-line"></i></a>
+          </div>
+          <a id="nav-a" href=<%= '/delete/'+filename %>>delete this file</a>
+          <button id="submitButton">Save File</button>
+        </nav>
+        <div id="text-area">
+          <form action=<%= "/savefile/"+filename %> method="post" id="myForm">
+            <textarea placeholder="write from here" name="textData"><%= filedata %></textarea>
+          </form>
+        </div>
+        <div id="terminal">
+          <h4>Custom terminal develop by Mr. Rahul</h4>
+          <div id="terminal-icon">
+            <i class="ri-arrow-right-s-line"></i>
+            <h5><%= action %></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../javascripts/index.js"></script>
+  </body>
+</html>
